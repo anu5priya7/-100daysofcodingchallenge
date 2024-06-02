@@ -1,0 +1,40 @@
+class Solution {
+    
+    // Method to check if a number is a palindrome
+    public static boolean isPalindrome(int num) {
+        int reverse = 0;
+        int original = num;
+        
+        // Reversing the number
+        while (num > 0) {
+            int digit = num % 10;
+            reverse = reverse * 10 + digit;
+            num /= 10;
+        }
+        
+        return reverse == original;
+    }
+ 
+    
+    // Method to count super palindromes within a range
+    public static int countSuperPalindrome(int sta1, int end1) {
+        int count = 0;
+        int sta = (int)Math.sqrt(sta1);
+         int end  = (int)Math.sqrt(end1);
+         
+        
+        for (int i = sta; i <= end; i++) {
+            
+            int p = i*i;
+    
+            if(isPalindrome(p)&&p>=sta1) {
+                        
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
+
+
