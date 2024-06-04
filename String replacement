@@ -1,0 +1,17 @@
+ class Solution {
+    public static int countOperations(String s) {
+        int count=0;
+        int ans=0;
+        int mod=1000000007;
+        for(int i=s.length()-1;i>=0;i--)
+        {
+            if(s.charAt(i)=='b')count++;
+            else
+            {
+                ans=(ans+count)%mod;
+                count=(count+count)%mod;
+            }
+        }
+        return ans;
+    }
+}
