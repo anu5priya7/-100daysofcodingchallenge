@@ -30,7 +30,7 @@ class Solution {
 }
  
 Complexity
-•	Time complexity: O(m+n + nlogn)
+•	Time complexity: O(m*n  + nlogn)
 •	Space complexity: O(n) or O(logn)
 
 
