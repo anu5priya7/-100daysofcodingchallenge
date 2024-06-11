@@ -1,0 +1,125 @@
+Approach - 1
+Brute force - Using Two Loops and Sorting
+
+ 
+ 
+class Solution {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        List<Integer> result = new ArrayList<>();
+        
+        for (int i = 0; i < arr2.length; i++) {
+            for (int j = 0; j < arr1.length; j++) {
+                if (arr1[j] == arr2[i]) {
+                    result.add(arr1[j]);
+                    arr1[j] = -1;
+                }
+            }
+        }
+        
+        Arrays.sort(arr1);
+        
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != -1) {
+                result.add(arr1[i]);
+            }
+        }
+        
+        // Convert List<Integer> to int[]
+        return result.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
+ 
+Complexity
+•	Time complexity: O(m+n + nlogn)
+•	Space complexity: O(n) or O(logn)
+
+
+
+Approach - 2
+Better approach - Using HashMap for Counting and Sorting
+ 
+ 
+class Solution {
+ 
+class Solution {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+        List<Integer> remaining = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
+
+        // Initialize count map with relative order elements
+        for (int num : arr2) {
+            countMap.put(num, 0);
+        }
+
+        // Count occurrences of elements in target array
+        for (int num : arr1) {
+            if (countMap.containsKey(num)) {
+                countMap.put(num, countMap.get(num) + 1);
+            } else {
+                remaining.add(num);
+            }
+        }
+
+        // Sort the remaining elements
+        Collections.sort(remaining);
+
+        // Add elements as per relative order
+        for (int num : arr2) {
+            for (int j = 0; j < countMap.get(num); j++) {
+                result.add(num);
+            }
+        }
+
+        // Add remaining elements
+        result.addAll(remaining);
+
+        // Convert List<Integer> to int[]
+        return result.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
+
+Complexity
+•	Time complexity: O(m+nlogn)
+•	Space complexity: O(n+m) i.e O(n)
+ 
+Approach - 3
+Optimised Approach - Using Counting Sort
+ 
+class Solution {
+
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        int maxElement = Arrays.stream(arr1).max().orElse(0);
+        int[] count = new int[maxElement + 1];
+
+        // Count occurrences of each element
+        for (int element : arr1) {
+            count[element]++;
+        }
+
+        List<Integer> result = new ArrayList<>();
+        // Add elements as per relative order
+        for (int value : arr2) {
+            while (count[value] > 0) {
+                result.add(value);
+                count[value]--;
+            }
+        }
+
+        // Add remaining elements in ascending order
+        for (int num = 0; num <= maxElement; num++) {
+            while (count[num] > 0) {
+                result.add(num);
+                count[num]--;
+            }
+        }
+
+        // Convert ArrayList to array
+        return result.stream().mapToInt(Integer::intValue).toArray();
+    }
+} 
+
+Complexity
+•	Time complexity: O(m+n+k)
+•	Space complexity: O(k)
+ 
