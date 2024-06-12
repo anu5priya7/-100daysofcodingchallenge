@@ -1,0 +1,114 @@
+ 
+
+
+
+//brute force approch 
+
+
+//  class Solution {
+//      public static boolean linearsearch(int arr[], int val){
+         
+//          for(int i=0; i<arr.length; i++){
+//              if(arr[i] == val){
+//                  return true;
+//              }
+           
+//          }
+         
+//          return false;
+//      }
+     
+//    public int longestConsecutive(int[] nums) {
+       
+//        int n = nums.length;
+//        int maxlen = 1;
+       
+//        int ct =1;
+       
+//        for(int i=0; i<n; i++){
+//             int x =nums[i];
+//              ct =1;
+           
+//            while(linearsearch(nums, x+1) == true){
+//                x = x+1;
+//                ct++;
+               
+//            }
+           
+//           maxlen = Math.max(maxlen, ct);
+           
+//        }
+//        return maxlen;
+//     }
+     
+      
+// }
+
+
+//beter approch
+
+
+//  class Solution {
+//        public int longestConsecutive(int[] nums) {
+//      int n = nums.length;
+//         if (n == 0) return 0;
+
+//         //sort the array:
+//         Arrays.sort(nums);
+//         int lastSmaller = Integer.MIN_VALUE;
+//         int cnt = 0;
+//         int longest = 1;
+
+//         //find longest sequence:
+//         for (int i = 0; i < n; i++) {
+//             if (nums[i] - 1 == lastSmaller) {
+//                 //nums[i] is the next element of the
+//                 //current sequence.
+//                 cnt += 1;
+//                 lastSmaller = nums[i];
+//             } else if (nums[i] != lastSmaller) {
+//                 cnt = 1;
+//                 lastSmaller = nums[i];
+//             }
+//             longest = Math.max(longest, cnt);
+//         }
+//         return longest;
+//        }
+//  }
+
+
+//optimized approch
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        HashMap<Integer, Boolean> hm = new HashMap<>();
+        for (int val : nums) {
+            hm.put(val, true);
+        }
+        for (int val : nums) {
+            if (hm.containsKey(val - 1)) {
+                hm.put(val, false);
+            }
+        }
+        int maxlen = 0;
+        int msp = 0;
+        for (int val : nums) {
+            if (hm.get(val) == true) {
+                int len = 1;
+                int tsp = val;
+                while (hm.containsKey(tsp + len)) {
+                    len++;
+                }
+
+                if (len > maxlen) {
+                    maxlen = len;
+                    msp = tsp;
+                }
+            }
+
+        }
+
+        return maxlen;
+    }
+}
+
