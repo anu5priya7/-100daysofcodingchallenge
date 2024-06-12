@@ -1,0 +1,49 @@
+
+
+class Solution {
+    public static int countNumberswith4(int n) {
+        
+        int ct =0;
+        for(int i=1; i<=n; i++){
+            
+            int nums = i;
+            
+            while(nums !=0){
+                
+                int dig = nums%10;
+                 nums = nums/10;
+                 
+                 if(dig == 4){
+                     ct++;
+                     break;
+                 }
+            }
+            
+            
+            
+        }
+        
+        return ct;
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
