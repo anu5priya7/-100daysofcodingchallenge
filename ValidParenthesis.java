@@ -1,3 +1,15 @@
+Input: s = "()"
+Output: true
+Example 2:
+
+Input: s = "()[]{}"
+Output: true
+Example 3:
+
+Input: s = "(]"
+Output: false
+
+    
 import java.util.Stack;
 
 public class ValidParenthesis {
@@ -42,3 +54,8 @@ public class ValidParenthesis {
         System.out.println("Is the string \"" + s + "\" valid? " + result);
     }
 }
+
+
+Time Complexity: O(n) - The method processes each character in the string exactly once, where n is the length of the string.
+
+Space Complexity: O(n) - In the worst case, the stack will contain all opening brackets if there are no closing brackets, requiring space proportional to the length of the string.
