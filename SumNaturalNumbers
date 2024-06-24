@@ -1,0 +1,15 @@
+public class SumNaturalNumbers {
+    public static int sum(int n) {
+        if (n == 0) {
+            return 0; // Base case: sum of natural numbers from 0 is 0
+        } else {
+            return n + sum(n - 1); // Recursive case: n + sum(n-1)
+        }
+    }
+
+    public static void main(String[] args) {
+        int number = 5;
+        int result = sum(number);
+        System.out.println("Sum of first " + number + " natural numbers is " + result);
+    }
+}
