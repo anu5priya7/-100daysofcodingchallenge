@@ -1,0 +1,17 @@
+public class Palindrome {
+    public static boolean isPalindrome(String str) {
+        if (str.length() <= 1) {
+            return true; // Base case: single character or empty string is palindrome
+        } else if (str.charAt(0) != str.charAt(str.length() - 1)) {
+            return false; // Base case: first and last characters do not match
+        } else {
+            return isPalindrome(str.substring(1, str.length() - 1)); // Recursive case: compare inner substring
+        }
+    }
+
+    public static void main(String[] args) {
+        String word = "racecar";
+        boolean result = isPalindrome(word);
+        System.out.println("\"" + word + "\" is a palindrome: " + result);
+    }
+}
