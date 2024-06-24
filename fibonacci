@@ -1,0 +1,15 @@
+public class Fibonacci {
+    public static int fibonacci(int n) {
+        if (n <= 1) {
+            return n; // Base case: Fibonacci of 0 or 1 is the number itself
+        } else {
+            return fibonacci(n - 1) + fibonacci(n - 2); // Recursive case: Fibonacci(n-1) + Fibonacci(n-2)
+        }
+    }
+
+    public static void main(String[] args) {
+        int number = 6;
+        int result = fibonacci(number);
+        System.out.println("Fibonacci sequence at position " + number + " is " + result);
+    }
+}
