@@ -1,0 +1,41 @@
+ 
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int x) {
+        val = x;
+        left = null;
+        right = null;
+    }
+}
+ 
+public class BinaryTreePreOrderTraversal {
+
+    
+    public void preOrder(TreeNode root) {
+        if (root != null) {
+            System.out.print(root.val + " "); // Print root node
+            preOrder(root.left); // Recursively traverse left subtree
+            preOrder(root.right); // Recursively traverse right subtree
+        }
+    }
+
+    // Example usage in main method
+    public static void main(String[] args) {
+        // Constructing a sample binary tree
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+
+        // Creating an instance of BinaryTreePreOrderTraversal
+        BinaryTreePreOrderTraversal tree = new BinaryTreePreOrderTraversal();
+
+        // Performing pre-order traversal and printing the result
+        System.out.print("Pre-order traversal: ");
+        tree.preOrder(root);
+    }
+}
