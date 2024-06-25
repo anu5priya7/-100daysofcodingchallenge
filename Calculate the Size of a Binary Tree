@@ -1,0 +1,37 @@
+ 
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int x) {
+        val = x;
+        left = null;
+        right = null;
+    }
+}
+
+// BinaryTreeSize class to calculate size of a binary tree
+
+public class BinaryTreeSize {
+     
+    public int size(TreeNode root) {
+        if (root == null) return 0;
+        return size(root.left) + size(root.right) + 1;
+    }
+ 
+    public static void main(String[] args) {
+        // Constructing a sample binary tree
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+
+        // Creating an instance of BinaryTreeSize
+        BinaryTreeSize tree = new BinaryTreeSize();
+
+        // Calculating and printing the size of the binary tree
+        System.out.println("Size of the tree: " + tree.size(root));
+    }
+}
