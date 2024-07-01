@@ -1,0 +1,45 @@
+// class Solution {
+//     public boolean threeConsecutiveOdds(int[] arr) {
+
+//         int i =0;
+//         int k =3;
+
+//         while(i<arr.length){
+//             for(int j =i; j<k; j++){
+//                 int val = arr[j];
+
+//                 if(val%2 !=0){
+//                     return true;
+//                 }
+
+//                 i++;
+
+//             }
+//         }
+
+//         return false;
+        
+//     }
+// }
+
+
+
+
+class Solution {
+    public boolean threeConsecutiveOdds(int[] arr) {
+        int count = 0;
+
+        for (int num : arr) {
+            if (num % 2 != 0) {
+                count++;
+                if (count == 3) {
+                    return true;
+                }
+            } else {
+                count = 0;
+            }
+        }
+
+        return false;
+    }
+}
