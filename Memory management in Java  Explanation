@@ -1,0 +1,40 @@
+Memory management in Java is a critical aspect of the language, designed to handle the allocation and deallocation of memory automatically.
+This process involves several key components and concepts:
+
+1. Heap and Stack Memory
+Heap Memory: This is the runtime data area from which memory for all class instances and arrays is allocated.
+It's used for dynamic memory allocation and is managed by the Garbage Collector (GC).
+Stack Memory: This memory is used for execution of a thread. It holds local variables, method calls, and the flow of execution. 
+Each thread has its own stack.
+
+2. Garbage Collection
+Java uses a Garbage Collector (GC) to manage memory deallocation. The GC automatically identifies and
+removes objects that are no longer in use, freeing up memory. The primary GC algorithms in Java include:
+
+Serial Garbage Collector: Uses a single thread to perform all garbage collection work, suitable for small applications.
+Parallel Garbage Collector: Uses multiple threads for garbage collection, aimed at high throughput.
+
+CMS (Concurrent Mark-Sweep) Garbage Collector: Aims for low pause times by concurrently marking and sweeping phases.
+
+G1 (Garbage-First) Garbage Collector: Divides the heap into regions and focuses on areas with the most garbage first.
+
+
+3. Generational Garbage Collection
+Java heap is divided into three generations:
+
+Young Generation: Where new objects are allocated and aged. It includes Eden space and two Survivor spaces.
+Old Generation (Tenured): Stores long-lived objects that survived multiple GC cycles in the Young Generation.
+Permanent Generation (Metaspace in Java 8 and later): Stores metadata about classes and methods. Metaspace replaces PermGen and is not part of the heap.
+
+
+4. Memory Leaks and OutOfMemoryError
+Despite automatic memory management, memory leaks can occur if objects are unintentionally kept alive. Common causes include:
+
+Holding references to objects longer than necessary.
+Static fields holding onto objects.
+An OutOfMemoryError occurs when the JVM cannot allocate memory due to heap space exhaustion.
+ 
+
+ 
+Java Performance Tuning
+Understanding and managing memory effectively in Java can significantly improve application performance and reliability.
