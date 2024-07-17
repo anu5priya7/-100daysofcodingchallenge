@@ -1,0 +1,18 @@
+class Solution{
+    public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+        
+         //The comparator (a, b) -> b - a ensures that the largest element has
+        //the highest priority in the heap, which is suitable for 
+        //maintaining the smallest elements.
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->b-a);
+        for(int i=l; i<=r; i++){
+            pq.add(arr[i]);  //addind all element of arr in priorityqueue
+            if(pq.size()>k){ // checking if size of pq exceeds by k
+                pq.poll();  //if yes then poll
+            }
+        }
+        
+        return pq.peek();  
+    } 
+}
